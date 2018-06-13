@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block section %}
+ <h2>Docente</h2>
+ <hr>
+{% endblock section %}
+
+{% block maincontent %}
+<div class="col-md-4 well">
+        <div class="panel panel-primary">
+            
+                {% for c in object_list.all %}
+         <a href="{% url 'docente-update' c.id %}">
+                {{ c.nombre }}
+         </a>
+         <a href="{% url "docente-delete" c.id %}">Eliminar</a> 
+      {% endfor %}
+            
+        </div>
+</div>
+{% endblock maincontent %} 

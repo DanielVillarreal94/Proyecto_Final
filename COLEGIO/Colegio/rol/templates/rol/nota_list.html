@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block section %}
+    <h2>Notas</h2>
+    <hr>
+{% endblock section %}
+
+{% block maincontent %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #55978b;
+}
+</style>
+    <div class="row well">
+        {% for p in object_list.all %}
+            <div class="col-md-4 well">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Nombre: {{ p.estudiante }} <br> Asiganatura: {{ p.materia }}</h3>  <br>                             
+                        <table style="width:100%">
+                            <tr>
+                                <th>nota1</th>
+                                <th>nota2</th>
+                                <th>nota3</th>
+                            </tr>
+                            <tr>
+                                <th>{{ p.nota1 }}</th>
+                                <th>{{ p.nota2 }}</th>
+                                <th>{{ p.nota3 }}</th>
+                            </tr>
+                        </table>
+                        <h4> su promedio es: {{ p.promedio }} </h4>         
+                    </div>
+                    <div class="panel-body">
+
+                            <a href="{% url "nota-update" p.id %}">
+                                Modificar
+                            </a>
+
+                            
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock maincontent %}

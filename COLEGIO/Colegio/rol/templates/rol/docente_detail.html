@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+ 
+{% load static %}
+
+{% block section %}
+    <h2>{{ object.name }}</h2>
+    <hr>
+{% endblock section %}
+
+{% block maincontent %}
+  <div>
+     <table border="1px">
+      <tr>
+          {% for p in object.list.all %}
+             <td>
+               <div>{{ p.nombre }} {{ p.apellido }} </div>
+               <div>
+                  <a href="{% url "docente-detail" p.id %}">
+                        {{ p.nombre }}
+                  </a>
+               </div>
+             </td>
+           {% endfor %}
+       </tr> 
+      </table>
+   </div>
+{% endblock maincontent %} 
